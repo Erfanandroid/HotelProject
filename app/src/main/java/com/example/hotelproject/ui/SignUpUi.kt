@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -24,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.hotelproject.R
 
 val PersianFont = FontFamily(
@@ -34,17 +34,10 @@ val PersianFont = FontFamily(
 )
 
 @Composable
-fun SignUp(){
+fun SignUp(
+    navController: NavController
+){
 
-
-    @Composable
-    fun FontStyledText(text: String) {
-        Text(
-            text = text,
-            fontFamily = PersianFont,
-            fontWeight = FontWeight.SemiBold
-        )
-    }
 
     Box(modifier = Modifier
         .fillMaxSize()
@@ -62,7 +55,7 @@ fun SignUp(){
             )
             Spacer(modifier = Modifier.height(10.dp))
     //------------------------------------------------------------------------------------------------------------------
-            NameCard{}
+            NameCard(){}
             Spacer(modifier = Modifier.height(30.dp))
 
     //---------------------------------------------------------------------------------------------------------------------------------
@@ -117,6 +110,7 @@ fun NameCard(
         mutableStateOf("")
     }
 
+
     Box(
         modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.Center
@@ -132,6 +126,7 @@ fun NameCard(
                 .background(Color.White, shape = RoundedCornerShape(10.dp))
                 .height(55.dp)
                 .width(250.dp)
+
             , placeholder = {
                 Text(text = "نام کاربری"
                     , modifier = Modifier

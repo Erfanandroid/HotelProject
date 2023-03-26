@@ -6,38 +6,35 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.hotelproject.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
-fun EntryUi(){
+fun EntryUi(
+    navController: NavController
+){
     val PersianFont = FontFamily(
         Font(R.font.lalezarregular, FontWeight.Normal),
         Font(R.font.lalezarregular,FontWeight.Light),
         Font(R.font.lalezarregular, FontWeight.SemiBold),
         Font(R.font.lalezarregular, FontWeight.ExtraBold)
     )
-    @Composable
-    fun FontStyledText(text: String) {
-        Text(
-            text = text,
-            fontFamily = PersianFont,
-            fontWeight = FontWeight.SemiBold
-        )
-    }
+
 
     Box(modifier = Modifier.fillMaxSize()){
         Image(painter = painterResource(id = R.drawable.hotel_login),
@@ -58,7 +55,11 @@ fun EntryUi(){
         )
 
         
-        Button(onClick = { /*TODO*/ }
+        Button(onClick = {
+                 navController.navigate(
+                     "SingUpScreen"
+                 )
+        }
         , shape = RoundedCornerShape(10.dp)
         , modifier = Modifier
                 .padding(bottom = 70.dp)
@@ -81,7 +82,9 @@ fun EntryUi(){
                 .align(Alignment.BottomStart)
                 .padding(bottom = 45.dp, start = 140.dp)
                 .clickable {
-
+                        navController.navigate(
+                            "SingInScreen"
+                        )
                 }
             , color = Color.Green
             , fontFamily = PersianFont
