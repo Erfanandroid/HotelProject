@@ -1,6 +1,5 @@
 package com.example.hotelproject.db
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 
 
@@ -15,10 +14,10 @@ interface CustomerDao {
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertRoom(room: Room)
+    suspend fun insertRoom(room: RoomTb)
 
     @Delete
-    suspend fun deleteRoom(room: Room)
+    suspend fun deleteRoom(room: RoomTb)
 
 
 
